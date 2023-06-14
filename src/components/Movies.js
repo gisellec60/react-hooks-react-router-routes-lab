@@ -3,27 +3,23 @@ import { movies } from "../data";
 
 function Movies() {
   
-  const {genres} = movies
+  const displayMovieInfo = movies.map((movie) => {
+       <div key={movie.title}>{movie.title}{movie.time}</div>
+       console.log("title and time", movie.title, movie.time)
+   })
 
-  console.log ("this is genres",genres)
-
-  const headings = movies.map((movie) => {
-      <h3>{movie.title}{movie.time}</h3>
-  })
-
-  console.log ("this is genres",movies.genres)
-
-  const movieGenre = genres.map((genre,index) => {
-    <li key={index}>{genre}</li>
-  })
+  const movieGenre = movies.map((movie,index) => {
+      <li key={index}>{movie.genres}</li>
+       console.log("this genre",movie.genres)
+   })
 
   return (
   <div>
     <h1>Movies Page</h1>
-    <h3>{headings}</h3>
-    <ul>
+      {displayMovieInfo}
+      <ul>
         {movieGenre}
-    </ul>
+      </ul>
   </div>
   )
 }
